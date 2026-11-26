@@ -2,8 +2,6 @@
 
 НИР-практика НОЦ ИИ · соревнование [kmbo-practic](https://www.kaggle.com/competitions/kmbo-practic)
 
-Автор: **Артур** · Аккаунт Kaggle: [gusidusi](https://www.kaggle.com/gusidusi)
-
 ## О проекте
 
 Бинарная классификация зрелости авокадо по фотографии:
