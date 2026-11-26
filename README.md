@@ -2,7 +2,7 @@
 
 НИР-практика НОЦ ИИ · соревнование [kmbo-practic](https://www.kaggle.com/competitions/kmbo-practic)
 
-Автор: **Артур [Фамилия]** · Аккаунт Kaggle: [gusidusi](https://www.kaggle.com/gusidusi)
+Автор: **Артур** · Аккаунт Kaggle: [gusidusi](https://www.kaggle.com/gusidusi)
 
 ## О проекте
 
