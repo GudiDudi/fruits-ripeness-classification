@@ -39,6 +39,17 @@ notebooks/
 Модель: MobileNetV2 (ImageNet) + аугментации (flip/rotation/zoom) + Dropout(0.2) + Dense(3, softmax);
 sparse categorical crossentropy, обучение головы 8 эпох (EarlyStopping, лучшая val_accuracy 0.9956), вход 224×224, batch 32, Adam(1e-3).
 
+## Файлы для сдачи (Богдану, лс)
+
+Всё лежит в папке [`deliverables/`](deliverables/) этого репозитория:
+
+| Файл | Что это |
+|---|---|
+| `deliverables/01.docx` | Задание 01: постановка задачи, аналоги, метрики, функции системы |
+| `deliverables/02.ipynb` | Задание 02: исследование данных (с результатами выполнения) |
+| `deliverables/03.ipynb` | Задание 03: baseline MobileNetV2 (с результатами выполнения) |
+| `deliverables/writeup_draft.md` | Черновик WriteUp по шаблону (итоговые эксперименты 04 — добавятся позже) |
+
 ## Как запустить
 
 Ноутбуки выполняются на Kaggle (данные подключаются как `moltean/fruits`).
