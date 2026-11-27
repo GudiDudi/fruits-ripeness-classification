@@ -1,6 +1,6 @@
 # Классификация степени зрелости фруктов по изображениям
 
-НИР-практика НОЦ ИИ · соревнование [kmbo-practic](https://www.kaggle.com/competitions/kmbo-practic)
+Учебный проект по классификации изображений · соревнование [kmbo-practic](https://www.kaggle.com/competitions/kmbo-practic)
 
 Автор: **Бахтибеков Артур, Макаров Ярослав  КМБО-24-24** · 
 
@@ -20,9 +20,9 @@
 
 ```
 notebooks/
-  02-fruits-ripeness-data.ipynb      # Задание 02: исследование и подготовка данных
-  03-fruits-ripeness-baseline.ipynb  # Задание 03: baseline (MobileNetV2, 3 класса)
-  04-fruits-ripeness-experiments.ipynb # Задание 04: эксперименты H1–H6 и выбор варианта
+  02-fruits-ripeness-data.ipynb      # 02: исследование и подготовка данных
+  03-fruits-ripeness-baseline.ipynb  # 03: baseline (MobileNetV2, 3 класса)
+  04-fruits-ripeness-experiments.ipynb # 04: эксперименты H1–H6 и выбор варианта
 ```
 
 Ноутбуки содержат результаты выполнения (outputs). Интерактивные версии на Kaggle:
@@ -30,7 +30,7 @@ notebooks/
 - [03. Baseline](https://www.kaggle.com/code/gusidusi/fruits-ripeness-03-baseline)
 - [04. Эксперименты](https://www.kaggle.com/code/gusidusi/fruits-ripeness-04-experiments)
 
-## Результаты baseline (задание 03)
+## Результаты baseline (ноутбук 03)
 
 | Метрика | Значение (validation, 459 изображ.) |
 |---|---|
@@ -41,7 +41,7 @@ notebooks/
 Модель: MobileNetV2 (ImageNet) + аугментации (flip/rotation/zoom) + Dropout(0.2) + Dense(3, softmax);
 sparse categorical crossentropy, обучение головы 8 эпох (EarlyStopping, лучшая val_accuracy 0.9956), вход 224×224, batch 32, Adam(1e-3).
 
-## Эксперименты (задание 04)
+## Эксперименты (ноутбук 04)
 
 Сравнение на единой validation (459 изображений), обучение только по train, правило выбора: максимум macro-F1 → accuracy → более ранний вариант.
 
@@ -57,17 +57,17 @@ sparse categorical crossentropy, обучение головы 8 эпох (Early
 
 **Выбран H1** (fine-tune верхних 30 слоёв MobileNetV2, lr 1e-5, 5 эпох): исправил единственную ошибку baseline (unripe→overripe, тёмно-зелёное авокадо) без новых ошибок. Итоговая модель `final_model.keras` + `predict.py` + `experiments.csv` — в outputs ноутбука 04 на Kaggle; предсказания воспроизводятся при повторной загрузке.
 
-## Файлы для сдачи (Богдану, лс)
+## Deliverables
 
-Всё лежит в папке [`deliverables/`](deliverables/) этого репозитория:
+Все итоговые файлы проекта лежат в папке [`deliverables/`](deliverables/):
 
 | Файл | Что это |
 |---|---|
-| `deliverables/01.docx` | Задание 01: постановка задачи, аналоги, метрики, функции системы |
-| `deliverables/02.ipynb` | Задание 02: исследование данных (с результатами выполнения) |
-| `deliverables/03.ipynb` | Задание 03: baseline MobileNetV2 (с результатами выполнения) |
-| `deliverables/04.ipynb` | Задание 04: эксперименты H1–H6 и выбор итогового варианта (с результатами) |
-| `deliverables/writeup_draft.md` | Черновик WriteUp по шаблону (обновлён числами заданий 03–04) |
+| `deliverables/01.docx` | Постановка задачи, аналоги, метрики, функции системы |
+| `deliverables/02.ipynb` | Исследование данных (с результатами выполнения) |
+| `deliverables/03.ipynb` | Baseline MobileNetV2 (с результатами выполнения) |
+| `deliverables/04.ipynb` | Эксперименты H1–H6 и выбор итогового варианта (с результатами) |
+| `deliverables/writeup_draft.md` | Отчёт по проекту: данные, модель, эксперименты, результаты |
 
 ## Как запустить
 
