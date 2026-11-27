@@ -22,11 +22,13 @@
 notebooks/
   02-fruits-ripeness-data.ipynb      # Задание 02: исследование и подготовка данных
   03-fruits-ripeness-baseline.ipynb  # Задание 03: baseline (MobileNetV2, 3 класса)
+  04-fruits-ripeness-experiments.ipynb # Задание 04: эксперименты H1–H6 и выбор варианта
 ```
 
 Ноутбуки содержат результаты выполнения (outputs). Интерактивные версии на Kaggle:
 - [02. Исследование данных](https://www.kaggle.com/code/gusidusi/fruits-ripeness-02-data-investigation)
 - [03. Baseline](https://www.kaggle.com/code/gusidusi/fruits-ripeness-03-baseline)
+- [04. Эксперименты](https://www.kaggle.com/code/gusidusi/fruits-ripeness-04-experiments)
 
 ## Результаты baseline (задание 03)
 
@@ -39,6 +41,22 @@ notebooks/
 Модель: MobileNetV2 (ImageNet) + аугментации (flip/rotation/zoom) + Dropout(0.2) + Dense(3, softmax);
 sparse categorical crossentropy, обучение головы 8 эпох (EarlyStopping, лучшая val_accuracy 0.9956), вход 224×224, batch 32, Adam(1e-3).
 
+## Эксперименты (задание 04)
+
+Сравнение на единой validation (459 изображений), обучение только по train, правило выбора: максимум macro-F1 → accuracy → более ранний вариант.
+
+| Вариант | Изменение | Accuracy | Macro-F1 | Ошибок |
+|---|---|---|---|---|
+| baseline (03) | — | 0.998 | 0.998 | 1 |
+| H1 | fine-tune верхних 30 слоёв (lr 1e-5) | **1.000** | **1.000** | **0** |
+| H2 | RandomContrast(0.2) + 15 эпох | 0.996 | 0.995 | 2 |
+| H3 | balanced class weights | 1.000 | 1.000 | 0 |
+| H4 | H1+H2 | 1.000 | 1.000 | 0 |
+| H5 | H1+H3 | 1.000 | 1.000 | 0 |
+| H6 | H1+H2+H3 | 1.000 | 1.000 | 0 |
+
+**Выбран H1** (fine-tune верхних 30 слоёв MobileNetV2, lr 1e-5, 5 эпох): исправил единственную ошибку baseline (unripe→overripe, тёмно-зелёное авокадо) без новых ошибок. Итоговая модель `final_model.keras` + `predict.py` + `experiments.csv` — в outputs ноутбука 04 на Kaggle; предсказания воспроизводятся при повторной загрузке.
+
 ## Файлы для сдачи (Богдану, лс)
 
 Всё лежит в папке [`deliverables/`](deliverables/) этого репозитория:
@@ -48,7 +66,8 @@ sparse categorical crossentropy, обучение головы 8 эпох (Early
 | `deliverables/01.docx` | Задание 01: постановка задачи, аналоги, метрики, функции системы |
 | `deliverables/02.ipynb` | Задание 02: исследование данных (с результатами выполнения) |
 | `deliverables/03.ipynb` | Задание 03: baseline MobileNetV2 (с результатами выполнения) |
-| `deliverables/writeup_draft.md` | Черновик WriteUp по шаблону (итоговые эксперименты 04 — добавятся позже) |
+| `deliverables/04.ipynb` | Задание 04: эксперименты H1–H6 и выбор итогового варианта (с результатами) |
+| `deliverables/writeup_draft.md` | Черновик WriteUp по шаблону (обновлён числами заданий 03–04) |
 
 ## Как запустить
 
@@ -60,7 +79,7 @@ sparse categorical crossentropy, обучение головы 8 эпох (Early
 - [x] 01. Постановка задачи и анализ существующих решений
 - [x] 02. Исследование и подготовка данных
 - [x] 03. Baseline
-- [ ] 04. Эксперименты и гипотезы
+- [x] 04. Эксперименты и гипотезы
 - [ ] 05. Локальное приложение
 - [ ] 06. Финальная проверка на тесте
 
